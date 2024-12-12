@@ -11,7 +11,7 @@ const carSchema = new mongoose.Schema({
     img_url: { type: String, required: true }, // Rasm manzili
     description: { type: String, required: true }, // Moshina haqida
     location: { type: String, required: true }, // Manzil
-    phone: { type: String, required: true } // Telefon nomer
+    phone: { type: String, required: true } // Telefon nomer    
 });
 
 const Car = mongoose.model('Car', carSchema);
