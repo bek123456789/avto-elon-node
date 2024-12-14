@@ -8,6 +8,7 @@ const carRoutes = require('./routes/carRoutes');
 const userRoutes = require('./routes/userRoutes');
 const messageRoutes = require('./routes/messageRoutes');
 const mototexnikaRoutes = require('./routes/mototexnikaRoutes');
+const newsRoutes = require('./routes/newsRoutes');
 
 const app = express();
 const server = http.createServer(app);
@@ -19,7 +20,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/cars', carRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/mototexnika', mototexnikaRoutes);
-
+app.use('/api/news', newsRoutes);
 const mongoURI = process.env.MONGO_URI || 'mongodb+srv://realmadridn977:eh9NlxWxNVlpARjG@bekzod-node.ylms7.mongodb.net/test?retryWrites=true&w=majority';
 
 
