@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Define the schema for news articles
+
 const newsSchema = new mongoose.Schema({
     img: {
         type: String,
@@ -13,7 +13,6 @@ const newsSchema = new mongoose.Schema({
     },
     date: {
         type: Date,
-        default: Date.now, // Automatically set the date to the current timestamp
     },
 });
 
