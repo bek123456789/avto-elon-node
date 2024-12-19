@@ -11,6 +11,7 @@ const userRoutes = require('./routes/userRoutes');
 const messageRoutes = require('./routes/messageRoutes');
 const mototexnikaRoutes = require('./routes/mototexnikaRoutes');
 const newsRoutes = require('./routes/newsRoutes');
+const suvTransportRoutes = require('./routes/suvTransportRoutes');
 
 // Import category and product routes
 const categoryRoutes = require('./routes/categoryRoutes');
@@ -37,6 +38,7 @@ app.use('/api/mototexnika', mototexnikaRoutes);
 app.use('/api/news', newsRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/suvTransports', suvTransportRoutes);
 
 const mongoURI = process.env.MONGO_URI || 'mongodb+srv://realmadridn977:eh9NlxWxNVlpARjG@bekzod-node.ylms7.mongodb.net/test?retryWrites=true&w=majority';
 
