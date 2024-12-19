@@ -1,8 +1,9 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const http = require('http'); // Import http module to create a server
-const socketIo = require('socket.io'); // Import socket.io
+const http = require('http');
+const socketIo = require('socket.io');
+const cors = require('cors');
 
 // Import routes
 const carRoutes = require('./routes/carRoutes');
@@ -17,9 +18,15 @@ const productRoutes = require('./routes/productRoutes');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIo(server, {
+    cors: {
+        origin: "*", // Adjust this to specific origins if required
+        methods: ["GET", "POST"]
+    }
+});
 
 // Middleware
+app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 
 // Routes
@@ -28,10 +35,9 @@ app.use('/api/cars', carRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/mototexnika', mototexnikaRoutes);
 app.use('/api/news', newsRoutes);
-app.use('/api/categories', categoryRoutes); // Add category routes
-app.use('/api/products', productRoutes);   // Add product routes
+app.use('/api/categories', categoryRoutes);
+app.use('/api/products', productRoutes);
 
-// MongoDB Connection
 const mongoURI = process.env.MONGO_URI || 'mongodb+srv://realmadridn977:eh9NlxWxNVlpARjG@bekzod-node.ylms7.mongodb.net/test?retryWrites=true&w=majority';
 
 mongoose.connect(mongoURI)
