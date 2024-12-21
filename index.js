@@ -17,6 +17,9 @@ const suvTransportRoutes = require('./routes/suvTransportRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const productRoutes = require('./routes/productRoutes');
 
+// Import yuk mashinalari route
+const yukMashinalariRoutes = require('./routes/yukMashinalariRoutes'); // Import the new route
+
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
@@ -28,7 +31,7 @@ const io = socketIo(server, {
 
 // Middleware
 app.use(cors()); // Enable CORS for all routes
-app.use(express.json());
+app.use(express.json()); // Enable parsing of JSON data
 
 // Routes
 app.use('/api/users', userRoutes);
@@ -40,6 +43,10 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/suvTransports', suvTransportRoutes);
 
+// Add the new yuk mashinalari route
+app.use('/api/yukMashinalari', yukMashinalariRoutes); // Mount the route
+
+// MongoDB connection string (replace with your own)
 const mongoURI = process.env.MONGO_URI || 'mongodb+srv://realmadridn977:eh9NlxWxNVlpARjG@bekzod-node.ylms7.mongodb.net/test?retryWrites=true&w=majority';
 
 mongoose.connect(mongoURI)
